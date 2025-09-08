@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "e:\\workspace\\dyf\\dyfg101\\plugins\\gamefeatures\\masstowerdefense\\source\\masstowerdefenseruntime\\private\\masstowerdefenseruntimemodule.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\workspace\\dyf\\dyfg101\\intermediate\\build\\win64\\x64\\g01editor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "e:\\workspace\\dyf\\dyfg101\\plugins\\gamefeatures\\masstowerdefense\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\masstowerdefenseruntime\\definitions.masstowerdefenseruntime.h",
+            "e:\\workspace\\dyf\\dyfg101\\plugins\\gamefeatures\\masstowerdefense\\source\\masstowerdefenseruntime\\public\\masstowerdefenseruntimemodule.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
