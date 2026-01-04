@@ -74,3 +74,16 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Plugins
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+
+
+Plugins/GameFeatures/**/Binaries/
+Plugins/GameFeatures/**/Intermediate/
+
+# UE Localization intermediate
+Content/Localization/**/.manifest
+Content/Localization/**/.archive
+Content/Localization/**/*.po
