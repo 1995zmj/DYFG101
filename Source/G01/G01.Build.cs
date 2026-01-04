@@ -33,17 +33,22 @@ public class G01 : ModuleRules
             "GameFeatures",
             "GameplayTags",
             "GameplayTasks",
+            "CommonUI",
+            "UIExtension",
             "GameplayAbilities",
+            "CommonGame",
+            "PropertyPath"
         });
 
         PrivateDependencyModuleNames.AddRange(new string[]
         {
             "NetCore",
-            "CommonUI",
-	        "CommonGame",
+            "SlateCore",
+            "CommonInput",
+            "GameSettings",
             "CommonUser",
-            "UIExtension",
             "DeveloperSettings",
+            "AudioMixer",
         });
 
 		// Uncomment if you are using Slate UI

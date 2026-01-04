@@ -7,6 +7,9 @@
 
 #include "G01ExperienceManagerComponent.generated.h"
 
+#define UE_API G01_API
+
+
 class UG01ExperienceDefinition;
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnExperienceLoaded, const UG01ExperienceDefinition* /*Experience*/);
@@ -39,11 +42,11 @@ public:
 
 	void SetCurrentExperience(FPrimaryAssetId ExperienceId);
 
-	void CallOrRegister_OnExperienceLoaded_HighPriority(FOnExperienceLoaded::FDelegate&& Delegate);
+	UE_API void CallOrRegister_OnExperienceLoaded_HighPriority(FOnExperienceLoaded::FDelegate&& Delegate);
 
-	void CallOrRegister_OnExperienceLoaded(FOnExperienceLoaded::FDelegate&& Delegate);
+	UE_API void CallOrRegister_OnExperienceLoaded(FOnExperienceLoaded::FDelegate&& Delegate);
 	
-	void CallOrRegister_OnExperienceLoaded_LowPriority(FOnExperienceLoaded::FDelegate&& Delegate);
+	UE_API void CallOrRegister_OnExperienceLoaded_LowPriority(FOnExperienceLoaded::FDelegate&& Delegate);
 
 	const UG01ExperienceDefinition* GetCurrentExperienceChecked() const;
 
@@ -84,3 +87,4 @@ private:
 	/** Delegate called when the experience has finished loading */
 	FOnExperienceLoaded OnExperienceLoaded_LowPriority;
 };
+#undef UE_API

@@ -7,6 +7,7 @@
 #include "G01LocalPlayer.generated.h"
 
 class UG01SettingsShared;
+class UG01SettingsLocal;
 
 /**
  * 
@@ -17,6 +18,11 @@ class UG01LocalPlayer : public UCommonLocalPlayer
 	GENERATED_BODY()
 
 public:
+	/** Gets the local settings for this player, this is read from config files at process startup and is always valid */
+	UFUNCTION()
+	UG01SettingsLocal* GetLocalSettings() const;
+
+	/** Gets the shared setting for this player, this is read using the save game system so may not be correct until after user login */
 	UFUNCTION()
 	UG01SettingsShared* GetSharedSettings() const;
 

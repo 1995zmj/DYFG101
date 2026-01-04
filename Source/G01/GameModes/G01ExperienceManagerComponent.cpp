@@ -11,6 +11,7 @@
 #include "GameFeaturesSubsystem.h"
 #include "G01ExperienceManager.h"
 #include "GameFeatureAction.h"
+#include "G01LogChannels.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(G01ExperienceManagerComponent)
 
@@ -113,6 +114,7 @@ void UG01ExperienceManagerComponent::SetCurrentExperience(FPrimaryAssetId Experi
 {
 	UAssetManager& AssetManager = UG01AssetManager::Get();
 	FSoftObjectPath AssetPath = AssetManager.GetPrimaryAssetPath(ExperienceId);
+	UE_LOG(LogExperience, Log, TEXT("Identified AssetPath %s"), *AssetPath.ToString());
 	TSubclassOf<UG01ExperienceDefinition> AssetClass = Cast<UClass>(AssetPath.TryLoad());
 	check(AssetClass);
 	const UG01ExperienceDefinition* Experience = GetDefault<UG01ExperienceDefinition>(AssetClass);

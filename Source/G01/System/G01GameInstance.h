@@ -16,4 +16,5 @@ class UG01GameInstance : public UCommonGameInstance
 	GENERATED_BODY()
 
 	virtual void Init() override;
+
 };

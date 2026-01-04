@@ -38,6 +38,7 @@ public class MassStrategyRuntime : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+                "MassSpawner",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

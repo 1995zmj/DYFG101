@@ -20,7 +20,7 @@ enum class EColorBlindMode : uint8
 };
 
 UENUM(BlueprintType)
-enum class ELyraAllowBackgroundAudioSetting : uint8
+enum class EG01AllowBackgroundAudioSetting : uint8
 {
 	Off,
 	AllSounds,
@@ -60,7 +60,9 @@ UCLASS()
 class UG01SettingsShared : public ULocalPlayerSaveGame
 {
 	GENERATED_BODY()
-
+public:
+	DECLARE_EVENT_OneParam(UG01SettingsShared, FOnSettingChangedEvent, UG01SettingsShared* Settings);
+	FOnSettingChangedEvent OnSettingChanged;
 public:
 
 	/** Creates a temporary settings object, this will be replaced by one loaded from the user's save game */
@@ -83,4 +85,70 @@ private:
 
 	UPROPERTY()
 	bool bInvertHorizontalAxis = false;
+
+	////////////////////////////////////////////////////////
+	// Shared audio settings
+public:
+	UFUNCTION()
+	EG01AllowBackgroundAudioSetting GetAllowAudioInBackgroundSetting() const { return AllowAudioInBackground; }
+	UFUNCTION()
+	void SetAllowAudioInBackgroundSetting(EG01AllowBackgroundAudioSetting NewValue);
+
+	void ApplyBackgroundAudioSettings();
+
+private:
+	UPROPERTY()
+	EG01AllowBackgroundAudioSetting AllowAudioInBackground = EG01AllowBackgroundAudioSetting::Off;
+
+	////////////////////////////////////////////////////////
+	// Culture / language
+public:
+	/** Gets the pending culture */
+	const FString& GetPendingCulture() const;
+
+	/** Sets the pending culture to apply */
+	void SetPendingCulture(const FString& NewCulture);
+
+	// Called when the culture changes.
+	void OnCultureChanged();
+
+	/** Clears the pending culture to apply */
+	void ClearPendingCulture();
+
+	bool IsUsingDefaultCulture() const;
+
+	void ResetToDefaultCulture();
+	bool ShouldResetToDefaultCulture() const { return bResetToDefaultCulture; }
+
+	void ApplyCultureSettings();
+	void ResetCultureToCurrentSettings();
+
+private:
+	/** The pending culture to apply */
+	UPROPERTY(Transient)
+	FString PendingCulture;
+
+	/* If true, resets the culture to default. */
+	bool bResetToDefaultCulture = false;
+
+
+	////////////////////////////////////////////////////////
+	/// Dirty and Change Reporting
+private:
+	template<typename T>
+	bool ChangeValueAndDirty(T& CurrentValue, const T& NewValue)
+	{
+		if (CurrentValue != NewValue)
+		{
+			CurrentValue = NewValue;
+			bIsDirty = true;
+			OnSettingChanged.Broadcast(this);
+
+			return true;
+		}
+
+		return false;
+	}
+
+	bool bIsDirty = false;
 };

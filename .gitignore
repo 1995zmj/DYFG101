@@ -79,8 +79,8 @@ DerivedDataCache/*
 Plugins/**/Binaries/
 Plugins/**/Intermediate/
 
-Plugins/GameFeatures/MassStrategy/Binaries/
-Plugins/GameFeatures/MassStrategy/Intermediate/
+/Plugins/GameFeatures/**/Binaries
+/Plugins/GameFeatures/**/Intermediate
 
 # UE Localization intermediate
 Content/Localization/**/.manifest

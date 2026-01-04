@@ -19,9 +19,7 @@ public:
 	static void NotifyOfPluginActivation(const FString PluginURL);
 	static bool RequestToDeactivatePlugin(const FString PluginURL);
 #else
-	inline void UG01ExperienceManager::OnPlayInEditorBegun()
-	{
-	}
+	
 	static void NotifyOfPluginActivation(const FString PluginURL) {}
 	static bool RequestToDeactivatePlugin(const FString PluginURL) { return true; }
 #endif

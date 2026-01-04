@@ -55,7 +55,7 @@ const UG01PawnData* AG01GameMode::GetPawnDataForController(const AController* In
 		}
 
 		// Experience is loaded and there's still no pawn data, fall back to the default for now
-		//return UG01AssetManager::Get().GetDefaultPawnData();
+		return UG01AssetManager::Get().GetDefaultPawnData();
 	}
 
 	// Experience not loaded yet, so there is no pawn data to be had

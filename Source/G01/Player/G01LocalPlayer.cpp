@@ -3,6 +3,12 @@
 
 #include "G01LocalPlayer.h"
 #include "Settings/G01SettingsShared.h"
+#include "Settings/G01SettingsLocal.h"
+
+UG01SettingsLocal* UG01LocalPlayer::GetLocalSettings() const
+{
+	return UG01SettingsLocal::Get();
+}
 
 UG01SettingsShared* UG01LocalPlayer::GetSharedSettings() const
 {
